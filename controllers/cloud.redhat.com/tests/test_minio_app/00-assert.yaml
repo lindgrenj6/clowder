@@ -1,17 +1,16 @@
 ---
 apiVersion: v1
 data:
-  accessKey: QUJDREVGR0hJSktM
-  hostname: ZXBoZW0tbWluaW8udGVzdDAxLnN2Yw==
-  port: OTAwMA==
-  secretKey: QUJDREVGR0hJSktM
+  cdappconfig.json: eyJrYWZrYSI6eyJicm9rZXJzIjpbeyJob3N0bmFtZSI6ImVwaGVtMS1rYWZrYS50ZXN0MDIuc3ZjIiwicG9ydCI6MjkwOTJ9XSwidG9waWNzIjpbXX0sImxvZ2dpbmciOnsiY2xvdWR3YXRjaCI6eyJhY2Nlc3NLZXlJZCI6IiIsImxvZ0dyb3VwIjoiIiwicmVnaW9uIjoiIiwic2VjcmV0QWNjZXNzS2V5IjoiIn0sInR5cGUiOiJudWxsIn0sIm1ldHJpY3NQYXRoIjoiL21ldHJpY3MiLCJtZXRyaWNzUG9ydCI6OTAwMCwib2JqZWN0U3RvcmUiOnsiYWNjZXNzS2V5IjoiQUJDREVGR0hJSktMIiwiYnVja2V0cyI6W3sibmFtZSI6ImluZ3Jlc3MtdXBsb2Fkcy1wZXJtYSIsInJlcXVlc3RlZE5hbWUiOiJpbmdyZXNzLXVwbG9hZHMtcGVybWEifV0sImhvc3RuYW1lIjoiZXBoZW0xLW1pbmlvLnRlc3QwMi5zdmMiLCJwb3J0Ijo5MDAwLCJzZWNyZXRLZXkiOiJBQkNERUZHSElKS0wifSwid2ViUG9ydCI6ODAwMH0=
 kind: Secret
 metadata:
   name: puptoo
   namespace: test02
+  labels:
+    app: puptoo
   ownerReferences:
   - apiVersion: cloud.redhat.com/v1alpha1
-    kind: CloudApp
+    kind: ClowdApp
     name: puptoo
 type: Opaque
 ---

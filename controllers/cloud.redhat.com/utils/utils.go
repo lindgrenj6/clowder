@@ -4,6 +4,7 @@ import (
 	"context"
 	b64 "encoding/base64"
 	"fmt"
+	"os"
 	"reflect"
 	"sort"
 	"strconv"
@@ -44,6 +45,16 @@ func RandString(n int) string {
 }
 
 type Updater bool
+
+var UnderTest bool
+
+func init() {
+	if os.Getenv("UNDER_TEST") == "true" {
+		UnderTest = true
+	} else {
+		UnderTest = false
+	}
+}
 
 func (u *Updater) Apply(ctx context.Context, cl client.Client, obj runtime.Object) error {
 	var err error

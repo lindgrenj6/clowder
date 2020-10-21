@@ -160,13 +160,21 @@ func NewMinIO(p *p.Provider) (ObjectStoreProvider, error) {
 		return nil, errors.Wrap("Couldn't set/get secret", err)
 	}
 
-	mp, err := createMinioProvider(p, *secMap, &minioHandler{})
+	var mp *minioProvider
+	if utils.UnderTest {
+		mp, err = createMinioProvider(p, *secMap, &mockBucketHandler{})
+	} else {
+		mp, err = createMinioProvider(p, *secMap, &minioHandler{})
+	}
 
 	if err != nil {
 		return nil, err
 	}
 
-	providers.MakeComponent(p.Ctx, p.Client, p.Env, "minio", makeLocalMinIO)
+	err = providers.MakeComponent(p.Ctx, p.Client, p.Env, "minio", makeLocalMinIO)
+	if err != nil {
+		return nil, err
+	}
 
 	return mp, nil
 }
