@@ -1,0 +1,35 @@
+---
+apiVersion: cloud.redhat.com/v1alpha1
+kind: ClowdEnvironment
+metadata:
+  name: ephem
+spec:
+  namespace: test01
+  web:
+    port: 8000
+    provider: operator
+  metrics:
+    port: 9000
+    provider: operator
+    path: "/metrics"
+  kafka:
+    namespace: kafka
+    clusterName: my-cluster
+    provider: local
+  db:
+    image: "registry.redhat.io/rhel8/postgresql-12:1-36"
+    provider: local
+  logging:
+    provider: none
+  objectStore:
+    provider: minio
+    #Possibly need to specify a port here
+  inMemoryDb:
+    provider: redis
+  resourceDefaults:
+    limits:
+      cpu: 400m
+      memory: 1024Mi
+    requests:
+      cpu: 30m
+      memory: 512Mi

@@ -93,3 +93,18 @@ Run the tests:
 $ KUBEBUILDER_ASSETS=$PWD/kubebuilder go test ./controllers/...
 ok      cloud.redhat.com/clowder/v2/controllers    9.626s
 ```
+
+## Kuttl Tests
+
+```
+$ KUBEBUILDER_ASSETS=$HOME/workspace/kubebuilder kubectl kuttl test --config test-config.yaml 
+...
+    kuttl: harness.go:326: run tests finished
+    kuttl: harness.go:401: killing process "./bin/manager"
+    kuttl: harness.go:411: bg process: "./bin/manager" exit code -1
+    kuttl: harness.go:427: tearing down mock control plane
+--- PASS: kuttl (6.27s)
+    --- PASS: kuttl/harness (0.00s)
+        --- PASS: kuttl/harness/test_local_kafka (1.08s)
+PASS
+```
