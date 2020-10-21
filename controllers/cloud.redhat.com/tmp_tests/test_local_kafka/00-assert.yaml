@@ -322,3 +322,19 @@ spec:
         name: mq-zookeeper-2
       - emptyDir: {}
         name: mq-zookeeper-3
+---
+apiVersion: v1
+data:
+  accessKey: QUJDREVGR0hJSktM
+  hostname: ZXBoZW0tbWluaW8udGVzdDAxLnN2Yw==
+  port: OTAwMA==
+  secretKey: QUJDREVGR0hJSktM
+kind: Secret
+metadata:
+  name: ephem-minio
+  namespace: test01
+  ownerReferences:
+  - apiVersion: cloud.redhat.com/v1alpha1
+    kind: ClowdEnvironment
+    name: ephem
+type: Opaque

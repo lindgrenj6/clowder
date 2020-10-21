@@ -4,7 +4,6 @@ import (
 	"context"
 	b64 "encoding/base64"
 	"fmt"
-	"math/rand"
 	"reflect"
 	"sort"
 	"strconv"
@@ -36,9 +35,9 @@ var Log logr.Logger = ctrllog.NullLogger{}
 // RandString generates a random string of length n
 func RandString(n int) string {
 	b := make([]byte, n)
-	rand.Seed(1)
 	for i := range b {
-		b[i] = rCharSet[rand.Intn(len(rCharSet))]
+		b[i] = rCharSet[i]
+		//b[i] = rCharSet[rand.Intn(len(rCharSet))]
 	}
 
 	return string(b)

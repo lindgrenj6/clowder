@@ -66,6 +66,7 @@ func (r *ClowdAppReconciler) Reconcile(req ctrl.Request) (ctrl.Result, error) {
 
 		return ctrl.Result{}, err
 	}
+	r.Log.Info("Reconciliation started", "app", app.Name)
 
 	env := crd.ClowdEnvironment{}
 	err = r.Client.Get(ctx, types.NamespacedName{
@@ -76,6 +77,8 @@ func (r *ClowdAppReconciler) Reconcile(req ctrl.Request) (ctrl.Result, error) {
 		return ctrl.Result{}, err
 	}
 
+	r.Log.Info("Get env succeeded", "app", app.Name)
+
 	maker, err := makers.New(&makers.Maker{
 		App:     &app,
 		Env:     &env,
@@ -85,13 +88,17 @@ func (r *ClowdAppReconciler) Reconcile(req ctrl.Request) (ctrl.Result, error) {
 		Log:     r.Log,
 	})
 
+	r.Log.Info("I did the make prep", "app", app.Name)
+
 	err = maker.Make()
+	r.Log.Info("I did the make", "app", app.Name)
 
 	if err == nil {
 		r.Log.Info("Reconciliation successful", "app", app.Name)
 	}
 
 	requeue := errors.HandleError(r.Log, err)
+	requeue = true
 	return ctrl.Result{Requeue: requeue}, nil
 }
 
