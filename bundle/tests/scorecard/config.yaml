@@ -47,3 +47,7 @@ stages:
     labels:
       suite: olm
       test: olm-status-descriptors-test
+  - image: quay.io/operator-framework/scorecard-test-kuttl:v1.0.1
+    labels:
+      suite: kuttlsuite
+      test: kuttltest1

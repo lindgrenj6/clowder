@@ -1,0 +1,6 @@
+apiVersion: kudo.dev/v1alpha1
+kind: TestSuite
+startControlPlane: false
+timeout: 120
+testDirs: 
+ - /bundle/tests/scorecard/kuttl/
