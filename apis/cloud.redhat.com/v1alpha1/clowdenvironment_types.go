@@ -108,16 +108,11 @@ type MinioStatus struct {
 	Port        int32                `json:"port"`
 }
 
-type ObjectStoreStatus struct {
-	Minio   MinioStatus `json:"minio,omitempty"`
-	Buckets []string    `json:"buckets"`
-}
-
 // ClowdEnvironmentStatus defines the observed state of ClowdEnvironment
 type ClowdEnvironmentStatus struct {
 	// INSERT ADDITIONAL STATUS FIELD - define observed state of cluster
 	// Important: Run "make" to regenerate code after modifying this file
-	ObjectStore ObjectStoreStatus `json:"objectStore"`
+	TargetNamespace string `json:"targetNamespace"`
 }
 
 // +kubebuilder:object:root=true
@@ -161,7 +156,7 @@ func (i *ClowdEnvironment) MakeOwnerReference() metav1.OwnerReference {
 }
 
 func (i *ClowdEnvironment) GetClowdNamespace() string {
-	return i.Spec.TargetNamespace
+	return i.Status.TargetNamespace
 }
 
 func (i *ClowdEnvironment) GetClowdName() string {

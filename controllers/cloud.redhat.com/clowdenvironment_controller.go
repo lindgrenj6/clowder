@@ -18,6 +18,7 @@ package controllers
 
 import (
 	"context"
+	"fmt"
 
 	"github.com/go-logr/logr"
 	"k8s.io/apimachinery/pkg/runtime"
@@ -58,6 +59,18 @@ func (r *ClowdEnvironmentReconciler) Reconcile(req ctrl.Request) (ctrl.Result, e
 			return ctrl.Result{}, nil
 		}
 		return ctrl.Result{}, err
+	}
+
+	if env.Status.TargetNamespace == "" {
+		if env.Spec.TargetNamespace != "" {
+			env.Status.TargetNamespace = env.Spec.TargetNamespace
+		} else {
+			env.Status.TargetNamespace = fmt.Sprintf("clowdenv-%s", env.Name)
+		}
+		err := r.Client.Status().Update(ctx, &env)
+		if err != nil {
+			return ctrl.Result{}, err
+		}
 	}
 
 	provider := providers.Provider{
