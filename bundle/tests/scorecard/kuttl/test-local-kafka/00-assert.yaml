@@ -11,12 +11,12 @@ metadata:
     app: ephem
     env-app: ephem-kafka
   name: ephem-kafka
-  namespace: test01
+  namespace: buddy
   ownerReferences:
   - apiVersion: cloud.redhat.com/v1alpha1
     kind: ClowdEnvironment
     name: ephem
-  selfLink: /api/v1/namespaces/test01/persistentvolumeclaims/ephem-kafka
+  selfLink: /api/v1/namespaces/buddy/persistentvolumeclaims/ephem-kafka
 spec:
   accessModes:
   - ReadWriteOnce
@@ -32,12 +32,12 @@ metadata:
     app: ephem
     env-app: ephem-kafka
   name: ephem-kafka
-  namespace: test01
+  namespace: buddy
   ownerReferences:
   - apiVersion: cloud.redhat.com/v1alpha1
     kind: ClowdEnvironment
     name: ephem
-  selfLink: /api/v1/namespaces/test01/services/ephem-kafka
+  selfLink: /api/v1/namespaces/buddy/services/ephem-kafka
 spec:
   ports:
   - name: kafka
@@ -58,12 +58,12 @@ metadata:
     app: ephem
     env-app: ephem-kafka
   name: ephem-kafka
-  namespace: test01
+  namespace: buddy
   ownerReferences:
   - apiVersion: cloud.redhat.com/v1alpha1
     kind: ClowdEnvironment
     name: ephem
-  selfLink: /apis/apps/v1/namespaces/test01/deployments/ephem-kafka
+  selfLink: /apis/apps/v1/namespaces/buddy/deployments/ephem-kafka
 spec:
   progressDeadlineSeconds: 600
   replicas: 1
@@ -156,12 +156,12 @@ metadata:
     app: ephem
     env-app: ephem-zookeeper
   name: ephem-zookeeper
-  namespace: test01
+  namespace: buddy
   ownerReferences:
   - apiVersion: cloud.redhat.com/v1alpha1
     kind: ClowdEnvironment
     name: ephem
-  selfLink: /api/v1/namespaces/test01/persistentvolumeclaims/ephem-zookeeper
+  selfLink: /api/v1/namespaces/buddy/persistentvolumeclaims/ephem-zookeeper
 spec:
   accessModes:
   - ReadWriteOnce
@@ -177,12 +177,12 @@ metadata:
     app: ephem
     env-app: ephem-zookeeper
   name: ephem-zookeeper
-  namespace: test01
+  namespace: buddy
   ownerReferences:
   - apiVersion: cloud.redhat.com/v1alpha1
     kind: ClowdEnvironment
     name: ephem
-  selfLink: /api/v1/namespaces/test01/services/ephem-zookeeper
+  selfLink: /api/v1/namespaces/buddy/services/ephem-zookeeper
 spec:
   ports:
   - name: zookeeper1
@@ -211,12 +211,12 @@ metadata:
     app: ephem
     env-app: ephem-zookeeper
   name: ephem-zookeeper
-  namespace: test01
+  namespace: buddy
   ownerReferences:
   - apiVersion: cloud.redhat.com/v1alpha1
     kind: ClowdEnvironment
     name: ephem
-  selfLink: /apis/apps/v1/namespaces/test01/deployments/ephem-zookeeper
+  selfLink: /apis/apps/v1/namespaces/buddy/deployments/ephem-zookeeper
 spec:
   progressDeadlineSeconds: 600
   replicas: 1
@@ -329,13 +329,13 @@ spec:
 apiVersion: v1
 data:
   accessKey: QUJDREVGR0hJSktM
-  hostname: ZXBoZW0tbWluaW8udGVzdDAxLnN2Yw==
+  hostname: ZXBoZW0tbWluaW8uYnVkZHkuc3Zj
   port: OTAwMA==
   secretKey: QUJDREVGR0hJSktM
 kind: Secret
 metadata:
   name: ephem-minio
-  namespace: test01
+  namespace: buddy
   ownerReferences:
   - apiVersion: cloud.redhat.com/v1alpha1
     kind: ClowdEnvironment

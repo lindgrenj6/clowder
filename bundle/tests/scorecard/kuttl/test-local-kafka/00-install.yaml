@@ -7,7 +7,7 @@ kind: ClowdEnvironment
 metadata:
   name: ephem
 spec:
-  targetNamespace: test01
+  targetNamespace: buddy
   providers:
     web:
       port: 8000
